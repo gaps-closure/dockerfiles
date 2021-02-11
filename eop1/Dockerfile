@@ -1,7 +1,6 @@
 FROM ubuntu:focal
 MAINTAINER mkaplan@perspectalabs.com
 ARG DEBIAN_FRONTEND=noninteractive
-ARG HWMODE
 
 RUN apt-get -y update                                   \
 &&  apt-get -y install					\
@@ -24,7 +23,12 @@ RUN apt-get -y update                                   \
     wget						\
     libboost-all-dev 					\
     bc 							\
-    openjdk-14-jre-headless
+    openjdk-14-jre-headless				\
+    libavcodec-dev 					\
+    libavformat-dev 					\
+    libswscale-dev					\
+    net-tools						\
+    vim
 
 RUN pip3 install decorator==4.4.1 jsonschema==3.2.0 lark-parser==0.7.8 libconf==2.0.1 vstask==1.1.5
 
@@ -55,6 +59,7 @@ RUN mkdir gaps \
 && cd build/apps/eop1/scripts \
 && ./build_pinstall.sh
 
+ARG HWMODE
 RUN cd gaps \
 && cd build/apps/eop1/scripts \
 && ldconfig		      \
