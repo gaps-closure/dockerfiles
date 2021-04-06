@@ -15,9 +15,14 @@ RUN apt-get -y update                                   \
     libboost-all-dev 					\
     bc 							\
     xdot						\
-    sudo
+    sudo						\
+    jq							\
+    z3							\
+    python3-z3						\
+    firefox
 
-RUN pip3 install decorator==4.4.1 jsonschema==3.2.0 lark-parser==0.7.8 libconf==2.0.1 vstask==1.1.5 networkx==2.5 pydot==1.4.1
+
+RUN pip3 install decorator==4.4.1 jsonschema==3.2.0 lark-parser==0.7.8 libconf==2.0.1 vstask==1.1.5 networkx==2.5 pydot==1.4.1 genson==1.2.2 dash==1.18.1 dash-cytoscape==0.2.0 pandas==1.2.1
 
 RUN cd /tmp \
 &&  wget https://sourceforge.net/projects/gitslave/files/gitslave-2.0.2.tar.gz \
@@ -36,9 +41,9 @@ RUN cd /tmp \
 && cp -r /usr/local/lib/python3.8/site-packages/clang /usr/local/lib/python3.8/dist-packages/clang
 
 RUN cd /opt \
-&& wget https://github.com/gaps-closure/build/releases/download/v1.2/closure_bin_v1.2_Ubuntu_20.04_x86_64.tar.gz \
-&& tar -zxvf closure_bin_v1.2_Ubuntu_20.04_x86_64.tar.gz \
-&& rm closure_bin_v1.2_Ubuntu_20.04_x86_64.tar.gz
+&& wget https://github.com/gaps-closure/build/releases/download/v1.2/closure_bin_v1.3_Ubuntu_20.04_x86_64.tar.gz \
+&& tar -zxvf closure_bin_v1.3_Ubuntu_20.04_x86_64.tar.gz \
+&& rm closure_bin_v1.3_Ubuntu_20.04_x86_64.tar.gz
 
 RUN useradd -ms /bin/bash closure \
 && usermod -aG sudo closure \
