@@ -41,9 +41,9 @@ RUN cd /tmp \
 && cp -r /usr/local/lib/python3.8/site-packages/clang /usr/local/lib/python3.8/dist-packages/clang
 
 RUN cd /opt \
-&& wget https://github.com/gaps-closure/build/releases/download/v1.2/closure_bin_v1.3_Ubuntu_20.04_x86_64.tar.gz \
-&& tar -zxvf closure_bin_v1.3_Ubuntu_20.04_x86_64.tar.gz \
-&& rm closure_bin_v1.3_Ubuntu_20.04_x86_64.tar.gz
+&& wget https://github.com/gaps-closure/build/releases/download/v1.2/closure_bin_v1.2_Ubuntu_20.04_x86_64.tar.gz \
+&& tar -zxvf closure_bin_v1.2_Ubuntu_20.04_x86_64.tar.gz \
+&& rm closure_bin_v1.2_Ubuntu_20.04_x86_64.tar.gz
 
 RUN useradd -ms /bin/bash closure \
 && usermod -aG sudo closure \
