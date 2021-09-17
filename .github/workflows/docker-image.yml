@@ -12,4 +12,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: ./build.sh closuredev
+      run: ./build.sh llvm && ./build.sh closuredev
