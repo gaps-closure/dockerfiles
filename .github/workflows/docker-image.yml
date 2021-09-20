@@ -25,6 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build closuredev docker image
+      run: ./build.sh closuredev 
   build-eop1dev:
     runs-on: ubuntu-latest
     needs: closure
