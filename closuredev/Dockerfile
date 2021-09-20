@@ -54,7 +54,7 @@ RUN cd /tmp \
 && wget https://github.com/gaps-closure/build/releases/download/v1.2/LLVM-10.0.1-Linux.sh \
 && bash ./LLVM-10.0.1-Linux.sh --prefix=/usr/local --exclude-subdir \
 && rm LLVM-10.0.1-Linux.sh \
-&& cp -r /usr/local/lib/python3.8/site-packages/clang /usr/local/lib/python3.8/dist-packages/clan
+&& cp -r /usr/local/lib/python3.8/site-packages/clang /usr/local/lib/python3.8/dist-packages/clang
 
 
 
@@ -116,12 +116,12 @@ RUN cd /tmp \
 &&  rm core_6.5.0_amd64.deb \
 &&  cp -R /usr/local/lib/python3.6/dist-packages/core /usr/local/lib/python3.8/dist-packages/ 
 
-COPY --from=llvm /opt/LLVM*.tar.gz /tmp/
+# COPY --from=llvm /opt/LLVM*.tar.gz /tmp/
 
-RUN cd /tmp \
-&& tar -xvzf LLVM-10.0.1-Linux.tar.gz \
-&& mkdir -p /opt/closure/devel \
-&& mv LLVM-10.0.1-Linux /opt/closure/devel/10.0.1dbg
+# RUN cd /tmp \
+# && tar -xvzf LLVM-10.0.1-Linux.tar.gz \
+# && mkdir -p /opt/closure/devel \
+# && mv LLVM-10.0.1-Linux /opt/closure/devel/10.0.1dbg
 
 
 RUN cd ~ \ 

@@ -7,9 +7,16 @@ on:
     branches: [ closuredev ]
 
 jobs:
-  build:
+  build-closuredev:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: ./build.sh llvm && ./build.sh closuredev
+    - name: Build closuredev docker image
+      run: ./build.sh closuredev 
+  build-closure:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build closure docker image
+      run: ./build.sh closure 
+  
