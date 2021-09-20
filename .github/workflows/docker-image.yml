@@ -21,16 +21,15 @@ jobs:
       run: ./build.sh llvm 
   build-closuredev:
     runs-on: ubuntu-latest
+    needs: llvm
     steps:
     - uses: actions/checkout@v2
     - name: Build closuredev docker image
-      run: ./build.sh closuredev 
-      needs: llvm
   build-eop1dev:
     runs-on: ubuntu-latest
+    needs: closure
     steps:
     - uses: actions/checkout@v2
     - name: Build eop1dev docker image
       run: ./build.sh eop1dev 
-      needs: closure
   
