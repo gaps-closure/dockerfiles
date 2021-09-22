@@ -116,7 +116,7 @@ RUN cd /tmp \
 &&  rm core_6.5.0_amd64.deb \
 &&  cp -R /usr/local/lib/python3.6/dist-packages/core /usr/local/lib/python3.8/dist-packages/ 
 
-COPY --from=llvm /opt/LLVM*.tar.gz /tmp/
+COPY --from=gapsclosure/llvm /opt/LLVM*.tar.gz /tmp/
 
 RUN cd /tmp \
 && tar -xvzf LLVM-10.0.1-Linux.tar.gz \
@@ -131,7 +131,7 @@ RUN cd ~ \
 && gits populate \ 
 && git checkout build-fixes \
 && ./build.sh \
-&& scripts/install_closure.sh; exit 0 
+&& scripts/install_closure.sh 
 
 RUN cd /opt/ \
 &&  sudo mkdir minizinc \

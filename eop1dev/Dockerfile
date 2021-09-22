@@ -13,7 +13,7 @@ RUN sudo apt-get -y update                              \
     automake						\
     libtool						\
     libssl-dev						\
-    openjdk-14-jre-headless				\
+    openjdk-16-jre-headless				\
     libavcodec-dev 					\
     libavformat-dev 					\
     libswscale-dev

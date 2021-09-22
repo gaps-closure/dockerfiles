@@ -23,7 +23,7 @@ RUN apt-get -y update                                   \
     wget						\
     libboost-all-dev 					\
     bc 							\
-    openjdk-14-jre-headless				\
+    openjdk-16-jre-headless				\
     libavcodec-dev 					\
     libavformat-dev 					\
     libswscale-dev					\

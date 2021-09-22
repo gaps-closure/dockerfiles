@@ -19,10 +19,11 @@ RUN apt-get -y update                                   \
     jq							\
     z3							\
     python3-z3						\
-    firefox
+    firefox                     \
+    cmake
 
 
-RUN pip3 install decorator==4.4.1 jsonschema==3.2.0 lark-parser==0.7.8 libconf==2.0.1 vstask==1.1.5 networkx==2.5 pydot==1.4.1 genson==1.2.2 dash==1.18.1 dash-cytoscape==0.2.0 pandas==1.2.1
+RUN pip3 install decorator==4.4.1 jsonschema==3.2.0 lark-parser==0.7.8 libconf==2.0.1 vstask==1.1.5 networkx==2.5 pydot==1.4.1 genson==1.2.2 dash==1.18.1 dash-cytoscape==0.2.0 pandas==1.2.1 pyzmq==22.2.1
 
 RUN cd /tmp \
 &&  wget https://sourceforge.net/projects/gitslave/files/gitslave-2.0.2.tar.gz \
@@ -41,9 +42,9 @@ RUN cd /tmp \
 && cp -r /usr/local/lib/python3.8/site-packages/clang /usr/local/lib/python3.8/dist-packages/clang
 
 RUN cd /opt \
-&& wget https://github.com/gaps-closure/build/releases/download/v1.2/closure_bin_v1.2_Ubuntu_20.04_x86_64.tar.gz \
-&& tar -zxvf closure_bin_v1.2_Ubuntu_20.04_x86_64.tar.gz \
-&& rm closure_bin_v1.2_Ubuntu_20.04_x86_64.tar.gz
+&& wget https://github.com/gaps-closure/build/releases/download/v1.2/closure_bin_v1.3b_Ubuntu_20.04_x86_64.tar.gz \
+&& tar -zxvf closure_bin_v1.3b_Ubuntu_20.04_x86_64.tar.gz \
+&& rm closure_bin_v1.3b_Ubuntu_20.04_x86_64.tar.gz 
 
 RUN useradd -ms /bin/bash closure \
 && usermod -aG sudo closure \
@@ -102,9 +103,14 @@ RUN cd /tmp \
 &&  rm core_6.5.0_amd64.deb \
 &&  cp -R /usr/local/lib/python3.6/dist-packages/core /usr/local/lib/python3.8/dist-packages/ 
 
+RUN cd /opt/ \
+&&  sudo mkdir minizinc \
+&&  sudo wget https://github.com/MiniZinc/MiniZincIDE/releases/download/2.5.5/MiniZincIDE-2.5.5-bundle-linux-x86_64.tgz \
+&&  sudo tar -xvzf MiniZinc* -C minizinc --strip-components=1
+
 USER closure
 ENV HOME /home/closure
-
+ENV PATH=$PATH:/opt/minizinc/bin:$PATH
 EXPOSE 21 22 6788 6789
 
 
