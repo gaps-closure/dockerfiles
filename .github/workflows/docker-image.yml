@@ -1,10 +1,6 @@
 name: Docker 
 
-on:
-  push:
-    branches: [ closuredev ]
-  pull_request:
-    branches: [ closuredev ]
+on: [push, pull_request]
 
 jobs:
   build:

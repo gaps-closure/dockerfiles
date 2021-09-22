@@ -116,12 +116,12 @@ RUN cd /tmp \
 &&  rm core_6.5.0_amd64.deb \
 &&  cp -R /usr/local/lib/python3.6/dist-packages/core /usr/local/lib/python3.8/dist-packages/ 
 
-COPY --from=gapsclosure/llvm /opt/LLVM*.tar.gz /tmp/
+# COPY --from=gapsclosure/llvm /opt/LLVM*.tar.gz /tmp/
 
-RUN cd /tmp \
-&& tar -xvzf LLVM-10.0.1-Linux.tar.gz \
-&& mkdir -p /opt/closure/devel \
-&& mv LLVM-10.0.1-Linux /opt/closure/devel/10.0.1dbg
+# RUN cd /tmp \
+# && tar -xvzf LLVM-10.0.1-Linux.tar.gz \
+# && mkdir -p /opt/closure/devel \
+# && mv LLVM-10.0.1-Linux /opt/closure/devel/10.0.1dbg
 
 
 RUN cd ~ \ 
@@ -129,7 +129,7 @@ RUN cd ~ \
 && git clone https://github.com/gaps-closure/build.git \
 && cd build \
 && gits populate \ 
-&& git checkout build-fixes \
+&& git checkout ${GIT_BRANCH:-build-fixes} \
 && ./build.sh \
 && scripts/install_closure.sh 
 
